@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_org_structure_form" model="ir.ui.view">
+        <field name="name">rules.org.structure.form</field>
+        <field name="model">rules.org.structure</field>
+        <field name="arch" type="xml">
+            <form string="Estructura Org">
+            <header>                    
+            </header>
+            <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>                
+            </sheet>                
+            </form>
+        </field>
+    </record>   
+
+    <record id="view_plaza_form" model="ir.ui.view">
+        <field name="name">rules.plaza.form</field>
+        <field name="model">rules.plazas</field>
+        <field name="arch" type="xml">
+            <form string="Plaza">
+            <header>                    
+            </header>
+            <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>                
+            </sheet>                
+            </form>
+        </field>
+    </record>   
+
+    <record id="view_rule_form" model="ir.ui.view">
+        <field name="name">rules.rule.form</field>
+        <field name="model">rules.rule</field>
+        <field name="arch" type="xml">
+            <form string="Rule Config">
+            <header>                    
+            </header>
+            <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <group>
+                    <group>
+                        <field name="org_structure_id"/>
+                        <field name="plaza_id"/>                            
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Reglas por monto">
+                        <field name="rule_line_ids" mode="tree">                            
+                            <tree string="Rules Lines" editable="bottom">
+                                <field name="name"/>
+                                <field name="amount_max"/>                                   
+                                <field name="amount_min"/>
+                                <field name="users_ids" widget="many2many_tags" options="{'no_create': True}"/> 
+                            </tree>
+                        </field>                                            
+                    </page>                        
+                </notebook>
+            </sheet>                
+            </form>
+        </field>
+    </record>    
+
+
+        <!-- Top menu item -->
+    <record id="view_rule_tree" model="ir.ui.view">
+        <field name="name">rules.rule.tree</field>
+        <field name="model">rules.rule</field>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <tree string="Rules Config">                
+                <field name="name"/>
+                <field name="plaza_id"/>
+                <field name="org_structure_id"/>                
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_rules_rule_menu" model="ir.actions.act_window">
+        <field name="name">Reglas de configuración</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rules.rule</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>        
+        <field name="view_id" ref="view_rule_tree"/>
+    </record>
+     
+
+    <menuitem id="config_rules_menu" name="Configuration Rules" action="action_rules_rule_menu" parent="purchase.menu_purchase_config" sequence="101"/>
+
+    
+
+</odoo>

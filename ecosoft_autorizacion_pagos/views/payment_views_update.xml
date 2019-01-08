@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!--TREE VIEW-->
+        <record id="plazas_tree" model="ir.ui.view">
+            <field name="name">plaza.tree</field>
+            <field name="model">rules.plazas</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="firma1"/>
+                    <field name="firma2"/>
+                    <field name="firma3"/>
+                    <field name="firma4"/>
+                    <field name="firma5"/>
+                </tree>
+            </field>
+        </record>
+
+         <!-- FORM VIEW -->
+        <record id="plaza_form" model="ir.ui.view">
+            <field name="name">plaza.form</field>
+            <field name="model">rules.plazas</field>
+            <field name="arch" type="xml">
+                <form string="Formulario Firmas">
+                    <sheet>
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <group col="50">
+                            <field name="firma1"/>
+                            <field name="firma2"/>
+                            <field name="firma3"/>
+                            <field name="firma4"/>
+                            <field name="firma5"/>
+                        </group>
+                        <!--<notebook>
+                            <page string="Ayuda social">
+                                <field name="ayuda_social_ids"/>
+                            </page>
+                        </notebook>-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ACTION -->
+        <record model="ir.actions.act_window" id="action_plaza">
+            <field name="name">Configuracion de Autorizacion de Pago</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rules.plazas</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--<menuitem id="menu_personas" name="Personas" sequence="3"/>-->
+        <!--<menuitem id="sub_menu_plazas" name="Plazas..." parent="payment.payment_icon_menu"/>-->
+        <menuitem id="lista_plazas" name="Autorizacion de Pago" parent="payment.root_payment_menu" sequence='10' action="action_plaza"/>
+
+    </data>
+</odoo>

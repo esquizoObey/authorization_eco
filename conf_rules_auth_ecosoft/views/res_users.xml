@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- auth rules-->
+        <record id="res_users_rules_form_view_inhirited" model="ir.ui.view">
+            <field name="name">res.users.rules.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//page[2]" position="after">
+                    <page name="auth_rules" string="Authorization Rules">
+                        <group string="Authorization Rules">
+                            <field string="Plazas" name="plazas_ids" widget="many2many_tags"/>
+                            <field string="Estructura Organizacionales" name="org_structure_ids" widget="many2many_tags"/>
+                        </group>                        
+                    </page>
+                </xpath>
+            </field>
+        </record>        
+
+    </data>
+</odoo>

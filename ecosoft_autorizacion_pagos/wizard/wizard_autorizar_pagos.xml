@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="wizard_enviar_autorizar_pago" model="ir.ui.view">
+            <field name="name">wizard.enviar.autorizar.pago</field>
+            <field name="model">wizard.autorizacion.pago</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Wizard Enviar Autorizar" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name='plaza_id'/>
+                            <field name='persona1' attrs="{'required':[('firma1','=',True)], 'readonly':[('firma1','=',False)]}"/>
+                            <field name='firma1' attrs="{'invisible':1}"/>
+                            <field name='persona2' attrs="{'required':[('firma2','=',True)], 'readonly':[('firma2','=',False)]}"/>
+                            <field name='firma2' attrs="{'invisible':1}"/>
+                            <field name='persona3' attrs="{'required':[('firma3','=',True)], 'readonly':[('firma3','=',False)]}"/>
+                            <field name='firma3' attrs="{'invisible':1}"/>
+                            <field name='persona4' attrs="{'required':[('firma4','=',True)], 'readonly':[('firma4','=',False)]}"/>
+                            <field name='firma4' attrs="{'invisible':1}"/>
+                            <field name='persona5' attrs="{'required':[('firma5','=',True)], 'readonly':[('firma5','=',False)]}"/>
+                            <field name='firma5' attrs="{'invisible':1}"/>
+                        </group>
+                        <!--<notebook>
+                            <page string="Firmantes">
+                                &lt;!&ndash;Filtra el id de las plazas asignadas al usuario con la que se selecciono&ndash;&gt;
+                                <field name='users_ids' domain="[('plazas_id', '=', plaza_id)]"/>
+                            </page>
+                        </notebook>-->
+
+                    </sheet>
+                    <footer>
+                        <button name="enviar_autorizacion" string="Enviar Autorizar" type="object" default_focus="1" class="oe_highlight" />
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window
+            id="action_enviar_autorizar_pago"
+            name="Enviar a Autorizar"
+            res_model="wizard.autorizacion.pago"
+            src_model="account.payment"
+            view_mode="form"
+            multi="True"
+            target="new"/>
+
+    </data>
+</odoo>

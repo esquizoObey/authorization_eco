@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!--TREE VIEW-->
+        <record id="estructura_organizacional_tree" model="ir.ui.view">
+            <field name="name">estructura.organizacional.tree</field>
+            <field name="model">rules.org.structure</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="categoria"/>
+                </tree>
+            </field>
+        </record>
+
+         <!-- FORM VIEW -->
+        <record id="estrucctura_organizacional_form" model="ir.ui.view">
+            <field name="name">estrucctura.organizacional.form</field>
+            <field name="model">rules.org.structure</field>
+            <field name="arch" type="xml">
+                <form string="Formulario Estructura Organizacional">
+                    <sheet>
+
+                        <group>
+                            <field name="name"/>
+                            <field name="categoria"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ACTION -->
+        <record model="ir.actions.act_window" id="action_estrucctura_organizacional">
+            <field name="name">Configuracion de Estructura Organizacional</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rules.org.structure</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--<menuitem id="menu_personas" name="Personas" sequence="3"/>-->
+        <!--<menuitem id="sub_menu_plazas" name="Plazas..." parent="payment.payment_icon_menu"/>-->
+        <menuitem id="lista_estructura_organizacional" name="Estructura Organizacional" parent="payment.root_payment_menu" sequence='20' action="action_estrucctura_organizacional"/>
+
+    </data>
+</odoo>

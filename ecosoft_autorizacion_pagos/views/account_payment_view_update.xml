@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_payment_form_update" model="ir.ui.view">
+            <field name="name">view.account.payment.form.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <field name="state" position="replace"> <!--SE ACTUALIZO EL 'STATUSBAR', Y SE AGREGARON MAS ESTATUS-->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,posted,por_autorizar,autorizado,reconciled,cancelled"/>
+                </field>
+
+                <!--<button name="action_draft" position="after">
+                    <button name="autorizar" class="oe_highlight" states="por_autorizar" string="Autorizar" type="object"/>
+                </button>-->
+
+            </field>
+        </record>
+
+    </data>
+</odoo>
